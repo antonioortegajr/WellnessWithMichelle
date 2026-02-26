@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellness with Michelle — Guadalajara</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F3EE;
+    --warm: #EDE4D8;
+    --sage: #8A9E8C;
+    --terracotta: #C67C5A;
+    --deep: #2C2620;
+    --gold: #C9A96E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════
+     HERO — mobile first (stacked)
+  ══════════════════════════════ */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    background: var(--deep);
+    overflow: hidden;
+  }
+
+  .hero-right {
+    position: relative;
+    width: 100%;
+    height: 52vw;
+    min-height: 200px;
+    max-height: 360px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    animation: heroZoom 8s ease forwards;
+  }
+
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--deep) 100%);
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1); }
+  }
+
+  .hero-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem 3.5rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--terracotta);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  .hero-sub {
+    font-size: clamp(0.88rem, 3.2vw, 1.26rem);
+    font-weight: 200;
+    line-height: 1.65;
+    color: rgba(247, 243, 238, 0.7);
+    max-width: 540px;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-location {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 300px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.5rem;
+    text-decoration: none;
+    font-size: 0.73rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    width: 100%;
+  }
+
+  .btn-primary { background: var(--terracotta); color: var(--cream); }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+
+  .btn-secondary {
+    border: 1px solid rgba(247, 243, 238, 0.3);
+    color: var(--cream);
+    font-weight: 300;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ══════════════════════════════
+     PHILOSOPHY
+  ══════════════════════════════ */
+  .philosophy {
+    padding: 4rem 1.5rem;
+    background: var(--cream);
+  }
+
+  .section-line { width: 40px; height: 1px; background: var(--terracotta); margin-bottom: 0.8rem; }
+
+  .philosophy-label {
+    font-size: 0.7rem; font-weight: 300;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 4.5vw, 2.2rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.55; color: var(--deep);
+    margin: 1.2rem 0;
+  }
+
+  .philosophy-quote em { color: var(--terracotta); font-style: normal; font-weight: 400; }
+
+  .philosophy-body {
+    font-size: 0.88rem; font-weight: 200;
+    line-height: 1.95; color: rgba(44,38,32,0.7);
+  }
+
+  /* ══════════════════════════════
+     SERVICES
+  ══════════════════════════════ */
+  .services { background: var(--deep); padding: 4rem 0 0; }
+
+  .services-header { text-align: center; padding: 0 1.5rem 2.5rem; }
+
+  .section-eyebrow {
+    font-size: 0.68rem; font-weight: 300;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.7rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-weight: 300; color: var(--cream); line-height: 1.2;
+  }
+
+  .services-grid { display: flex; flex-direction: column; }
+
+  .service-card {
+    position: relative; overflow: hidden;
+    height: 68vw; min-height: 260px; max-height: 440px;
+    cursor: pointer;
+  }
+
+  .service-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease; filter: brightness(0.6);
+  }
+  .service-card:hover img { transform: scale(1.06); filter: brightness(0.45); }
+
+  .service-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(44,38,32,0.95) 0%, rgba(44,38,32,0.1) 55%, transparent 100%);
+  }
+
+  .service-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.6rem; z-index: 2;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover .service-content { transform: translateY(-8px); }
+
+  .service-number { font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.25rem; }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+    font-weight: 300; color: var(--cream); margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem; font-weight: 200;
+    line-height: 1.7; color: rgba(247,243,238,0.8);
+  }
+
+  .service-tag {
+    display: inline-block; margin-top: 0.9rem;
+    padding: 0.32rem 0.85rem;
+    border: 1px solid rgba(201,169,110,0.5);
+    color: var(--gold); font-size: 0.63rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════
+     CLASSES
+  ══════════════════════════════ */
+  .classes { padding: 4rem 1.5rem; background: var(--warm); }
+
+  .classes-visual { position: relative; margin-bottom: 3.5rem; }
+
+  .classes-img-main {
+    width: 100%; height: 58vw;
+    min-height: 220px; max-height: 400px;
+    object-fit: cover; display: block;
+  }
+
+  .classes-badge {
+    position: absolute; bottom: -1.5rem; right: 0.8rem;
+    width: 100px; height: 100px;
+    background: var(--terracotta); border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+  }
+
+  .classes-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: var(--cream); line-height: 1;
+  }
+
+  .classes-badge-text {
+    font-size: 0.52rem; font-weight: 300;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(247,243,238,0.85);
+  }
+
+  .classes-content .section-eyebrow { color: var(--terracotta); }
+  .classes-content .section-title { color: var(--deep); }
+
+  .classes-desc {
+    font-size: 0.88rem; font-weight: 200;
+    line-height: 1.9; color: rgba(44,38,32,0.7);
+    margin: 1.1rem 0 2rem;
+  }
+
+  .class-types {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.9rem; margin-bottom: 2.2rem;
+  }
+
+  .class-type {
+    padding: 1.1rem;
+    border: 1px solid rgba(44,38,32,0.12);
+    background: rgba(255,255,255,0.5);
+    transition: all 0.3s;
+  }
+  .class-type:hover { border-color: var(--terracotta); background: white; transform: translateY(-2px); }
+
+  .class-type-icon { font-size: 1.2rem; margin-bottom: 0.4rem; }
+
+  .class-type-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 400; color: var(--deep); margin-bottom: 0.25rem;
+  }
+
+  .class-type-desc { font-size: 0.73rem; font-weight: 200; color: rgba(44,38,32,0.6); line-height: 1.6; }
+
+  /* ══════════════════════════════
+     TESTIMONIALS
+  ══════════════════════════════ */
+  .testimonials { padding: 4rem 1.5rem; background: var(--cream); text-align: center; }
+
+  .testimonials-grid {
+    display: flex; flex-direction: column;
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+
+  .testimonial-card {
+    padding: 1.8rem; background: var(--warm);
+    border-top: 2px solid var(--sage);
+    text-align: left; transition: transform 0.3s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); }
+
+  .testimonial-stars { color: var(--gold); font-size: 0.82rem; margin-bottom: 0.8rem; }
+
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; font-weight: 300;
+    line-height: 1.7; color: var(--deep); margin-bottom: 1rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.68rem; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta);
+  }
+
+  /* ══════════════════════════════
+     CONTACT
+  ══════════════════════════════ */
+  .contact { padding: 4rem 1.5rem; background: var(--deep); }
+
+  .contact-content .section-eyebrow { color: var(--gold); }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 6.5vw, 3.5rem);
+    font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 1.1rem;
+  }
+  .contact-title em { color: var(--terracotta); font-style: italic; }
+
+  .contact-desc {
+    font-size: 0.88rem; font-weight: 200;
+    line-height: 1.9; color: rgba(247,243,238,0.65); margin-bottom: 2rem;
+  }
+
+  .whatsapp-btn {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.9rem; width: 100%; padding: 1.1rem 1.5rem;
+    background: #25D366; color: white; text-decoration: none;
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em;
+    transition: all 0.3s; border-radius: 2px;
+  }
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,211,102,0.3); }
+
+  .whatsapp-icon { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+  .contact-info { margin-top: 3rem; }
+
+  .contact-info-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(247,243,238,0.1);
+  }
+  .contact-info-item:first-child { border-top: 1px solid rgba(247,243,238,0.1); }
+
+  .info-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+  }
+
+  .info-label { font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+  .info-value { font-size: 0.88rem; font-weight: 200; color: var(--cream); }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    padding: 2rem 1.5rem;
+    background: #1a1410;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem; text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; color: var(--cream); }
+  .footer-logo span { color: var(--terracotta); font-style: italic; }
+  .footer-text { font-size: 0.68rem; font-weight: 200; color: rgba(247,243,238,0.35); letter-spacing: 0.08em; }
+
+  /* ══════════════════════════════
+     ANIMATIONS
+  ══════════════════════════════ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ══════════════════════════════
+     TABLET  640px+
+  ══════════════════════════════ */
+  @media (min-width: 640px) {
+
+    .hero-left { padding: 2.5rem 3rem 4rem; }
+
+    .hero-buttons { flex-direction: row; width: auto; max-width: none; }
+    .btn-primary, .btn-secondary { width: auto; }
+
+    .philosophy { padding: 5rem 3rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .service-card { height: 400px; max-height: none; }
+
+    .classes { padding: 5rem 3rem; }
+
+    .testimonials { padding: 5rem 3rem; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .contact { padding: 5rem 3rem; }
+
+    footer { flex-direction: row; justify-content: space-between; padding: 2rem 3rem; }
+  }
+
+  /* ══════════════════════════════
+     DESKTOP  1024px+
+  ══════════════════════════════ */
+  @media (min-width: 1024px) {
+
+    /* Hero: image on right, text on left */
+    .hero { flex-direction: row; min-height: 100vh; }
+
+    .hero-right {
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      max-height: none;
+    }
+
+    .hero-right::after {
+      background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
+    }
+
+    .hero-left {
+      position: relative; z-index: 2;
+      width: 60%; padding: 5rem 4rem 5rem 6rem;
+      align-items: flex-start; text-align: left;
+    }
+
+    .hero-buttons { flex-direction: row; }
+
+    /* Philosophy two-col */
+    .philosophy {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 5rem; padding: 7rem 6rem;
+    }
+
+    /* Services 3-col */
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-card { height: 580px; }
+
+    /* Classes two-col */
+    .classes {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; padding: 7rem 6rem;
+    }
+    .classes-visual { margin-bottom: 0; }
+    .classes-img-main { height: 480px; max-height: none; }
+    .classes-badge { width: 128px; height: 128px; bottom: -2rem; right: -1.5rem; }
+    .classes-badge-num { font-size: 2.2rem; }
+    .classes-badge-text { font-size: 0.58rem; }
+
+    /* Testimonials 3-col */
+    .testimonials { padding: 7rem 6rem; }
+    .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* Contact two-col */
+    .contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; padding: 7rem 6rem;
+    }
+    .whatsapp-btn { width: auto; }
+    .contact-info { margin-top: 0; }
+
+    footer { padding: 2.5rem 6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1200&q=85&fit=crop" alt="Wellness practice" />
+  </div>
+  <div class="hero-left">
+    <h1 class="hero-title">Wellness With Michelle</h1>
+    <p class="hero-sub">Your wellness journey is completely unique. Transform your body and soul with pilates, meditation, reiki, or a personally curated combination of disciplines.</p>
+    <div class="hero-location">Guadalajara &nbsp;|&nbsp; Zapopan</div>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Book via WhatsApp
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about">
+  <div>
+    <p class="section-line"></p>
+    <p class="philosophy-label">My Philosophy</p>
+  </div>
+  <div class="reveal">
+    <p class="philosophy-quote">
+      "True wellness is the <em>harmony</em> of mind, body, and spirit — a journey that begins with a single breath."
+    </p>
+    <p class="philosophy-body">
+      I'm Michelle, and I believe every person holds the innate capacity for healing and transformation. My practice integrates proven methods — pilates for physical strength, meditation for mental clarity, and reiki for energetic balance — into a personalized path uniquely yours. Whether you seek one-on-one attention or the shared energy of a group, I'm here to guide you.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <p class="section-eyebrow">What I Offer</p>
+    <h2 class="section-title">Three pillars of<br><em style="font-style:italic; color:var(--terracotta)">holistic wellness</em></h2>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=85&fit=crop&crop=center" alt="Pilates" />
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <p class="service-number">01</p>
+        <h3 class="service-name">Pilates</h3>
+        <p class="service-desc">Build core strength, improve posture, and restore body alignment through mindful movement. Sessions tailored to all levels.</p>
+        <span class="service-tag">Strength · Alignment · Flow</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=85&fit=crop&crop=top" alt="Meditation" />
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <p class="service-number">02</p>
+        <h3 class="service-name">Meditation</h3>
+        <p class="service-desc">Quiet the mind, reduce stress, and cultivate inner peace through guided practices grounded in mindfulness traditions.</p>
+        <span class="service-tag">Mindfulness · Clarity · Peace</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=800&q=85&fit=crop&crop=center" alt="Reiki" />
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <p class="service-number">03</p>
+        <h3 class="service-name">Reiki</h3>
+        <p class="service-desc">Channel universal life energy to restore emotional and physical balance through gentle, deeply relaxing healing.</p>
+        <span class="service-tag">Energy · Healing · Balance</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+  <div class="classes-visual reveal">
+    <img class="classes-img-main" src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=85&fit=crop" alt="Wellness classes" />
+    <div class="classes-badge">
+      <span class="classes-badge-num">1:1</span>
+      <span class="classes-badge-text">& group<br>sessions</span>
+    </div>
+  </div>
+  <div class="classes-content reveal">
+    <p class="section-eyebrow">How We Work</p>
+    <h2 class="section-title" style="color:var(--deep)">Choose your<br><em style="color:var(--terracotta);font-style:italic">path to wellness</em></h2>
+    <p class="classes-desc">
+      Whether you prefer the focused attention of a private session or the motivating energy of a small group, there's a place for you here. Each format is designed to meet you exactly where you are.
+    </p>
+    <div class="class-types">
+      <div class="class-type">
+        <div class="class-type-icon">🌿</div>
+        <p class="class-type-name">Personal Classes</p>
+        <p class="class-type-desc">One-on-one sessions fully tailored to your goals, pace, and needs.</p>
+      </div>
+      <div class="class-type">
+        <div class="class-type-icon">✨</div>
+        <p class="class-type-name">Group Sessions</p>
+        <p class="class-type-desc">Small, intimate group classes where shared energy amplifies the experience.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/523314668654?text=Hola%20Michelle!%20Me%20interesa%20reservar%20una%20clase." class="btn-primary" style="background:var(--deep); width:100%; justify-content:center;">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Sign Up via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-eyebrow">Kind Words</p>
+  <h2 class="section-title" style="color:var(--deep)">What clients say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <p class="testimonial-stars">★★★★★</p>
+      <p class="testimonial-text">"Michelle completely transformed my relationship with movement. After just a few pilates sessions I feel stronger, more centered, and genuinely at peace."</p>
+      <p class="testimonial-author">— Sofía R., Guadalajara</p>
+    </div>
+    <div class="testimonial-card reveal">
+      <p class="testimonial-stars">★★★★★</p>
+      <p class="testimonial-text">"The reiki sessions with Michelle are unlike anything I've experienced. She creates a space of such deep calm. I leave feeling completely renewed every time."</p>
+      <p class="testimonial-author">— Andrea M., Zapopan</p>
+    </div>
+    <div class="testimonial-card reveal">
+      <p class="testimonial-stars">★★★★★</p>
+      <p class="testimonial-text">"The group meditation classes are the highlight of my week. Michelle guides with such warmth and expertise. I've recommended her to everyone I know."</p>
+      <p class="testimonial-author">— Valentina C., Guadalajara</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-content reveal">
+    <p class="section-eyebrow">Begin Your Journey</p>
+    <h2 class="contact-title">Ready to feel <em>well?</em></h2>
+    <p class="contact-desc">
+      Reach out directly via WhatsApp to book your first session, ask questions, or learn more about personal and group options. I'd love to hear from you.
+    </p>
+    <a href="https://wa.me/523314668654?text=Hola%20Michelle!%20Me%20interesa%20conocer%20más%20sobre%20tus%20servicios%20de%20bienestar." class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+      Chat on WhatsApp — +52 33 1466 8654
+    </a>
+  </div>
+  <div class="contact-info reveal">
+    <div class="contact-info-item">
+      <div class="info-icon">📍</div>
+      <div>
+        <p class="info-label">Location</p>
+        <p class="info-value">Guadalajara, Jalisco, México</p>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <div class="info-icon">💬</div>
+      <div>
+        <p class="info-label">WhatsApp</p>
+        <p class="info-value">+52 33 1466 8654</p>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <div class="info-icon">🌿</div>
+      <div>
+        <p class="info-label">Services</p>
+        <p class="info-value">Pilates · Meditation · Reiki</p>
+      </div>
+    </div>
+    <div class="contact-info-item">
+      <div class="info-icon">✨</div>
+      <div>
+        <p class="info-label">Session Types</p>
+        <p class="info-value">Personal & Group Classes Available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Wellness <span>with Michelle</span></div>
+  <p class="footer-text">Guadalajara · Zapopan · Pilates · Meditation · Reiki</p>
+  <p class="footer-text">© 2025 Wellness with Michelle</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
